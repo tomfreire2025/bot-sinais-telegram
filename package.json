@@ -1,0 +1,80 @@
+{
+  "name": "alfa-voice-crypto-copilot",
+  "version": "1.0.0",
+  "description": "SaaS de análise de criptomoedas por voz em português brasileiro",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:web\" \"npm run dev:api\" \"npm run dev:worker\"",
+    "dev:web": "cd apps/web && npm run dev",
+    "dev:api": "cd apps/api && npm run dev",
+    "dev:worker": "cd apps/worker && npm run dev",
+    "build": "npm run build:web && npm run build:api && npm run build:worker",
+    "build:web": "cd apps/web && npm run build",
+    "build:api": "cd apps/api && npm run build",
+    "build:worker": "cd apps/worker && npm run build",
+    "start": "concurrently \"npm run start:web\" \"npm run start:api\" \"npm run start:worker\"",
+    "start:web": "cd apps/web && npm run start",
+    "start:api": "cd apps/api && npm run start",
+    "start:worker": "cd apps/worker && npm run start",
+    "lint": "npm run lint:web && npm run lint:api && npm run lint:worker",
+    "lint:web": "cd apps/web && npm run lint",
+    "lint:api": "cd apps/api && npm run lint",
+    "lint:worker": "cd apps/worker && npm run lint",
+    "type-check": "npm run type-check:web && npm run type-check:api && npm run type-check:worker",
+    "type-check:web": "cd apps/web && npm run type-check",
+    "type-check:api": "cd apps/api && npm run type-check",
+    "type-check:worker": "cd apps/worker && npm run type-check",
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:unit": "jest",
+    "test:e2e": "playwright test",
+    "test:coverage": "jest --coverage",
+    "db:migrate": "cd packages/database && npx prisma migrate dev",
+    "db:seed": "cd packages/database && npx prisma db seed",
+    "db:reset": "cd packages/database && npx prisma migrate reset --force",
+    "db:studio": "cd packages/database && npx prisma studio",
+    "deploy:web": "cd apps/web && vercel --prod",
+    "deploy:api": "cd apps/api && fly deploy",
+    "deploy:worker": "cd apps/worker && render deploy",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "docker:build": "docker-compose build",
+    "clean": "rm -rf node_modules apps/*/node_modules packages/*/node_modules",
+    "install:all": "npm install && npm run install:web && npm run install:api && npm run install:worker",
+    "install:web": "cd apps/web && npm install",
+    "install:api": "cd apps/api && npm install",
+    "install:worker": "cd apps/worker && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "jest": "^29.7.0",
+    "@playwright/test": "^1.40.1",
+    "typescript": "^5.3.3",
+    "@types/node": "^20.10.5",
+    "eslint": "^8.56.0",
+    "prettier": "^3.1.1"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alfa-crypto/voice-copilot.git"
+  },
+  "keywords": [
+    "cryptocurrency",
+    "voice",
+    "ai",
+    "saas",
+    "nextjs",
+    "typescript",
+    "portuguese"
+  ],
+  "author": "ALFA Team",
+  "license": "MIT"
+}
