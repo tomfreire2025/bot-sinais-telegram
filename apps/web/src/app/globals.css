@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-alfa-dark text-alfa-light font-sans antialiased;
+    background: linear-gradient(135deg, #0F1115 0%, #0A0B0F 100%);
+    min-height: 100vh;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Scrollbar personalizada */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-alfa-darker;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gradient-alfa rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-alfa-primary;
+  }
+}
+
+@layer components {
+  /* Botões ALFA */
+  .btn-alfa {
+    @apply relative px-6 py-3 rounded-2xl font-semibold text-sm transition-all duration-300 transform hover:scale-105 active:scale-95;
+    @apply bg-gradient-alfa text-white shadow-alfa;
+    @apply hover:shadow-alfa-lg hover:brightness-110;
+  }
+
+  .btn-alfa-secondary {
+    @apply relative px-6 py-3 rounded-2xl font-semibold text-sm transition-all duration-300 transform hover:scale-105 active:scale-95;
+    @apply bg-alfa-darker text-alfa-light border border-alfa-primary/30;
+    @apply hover:border-alfa-primary/60 hover:shadow-neon;
+  }
+
+  .btn-alfa-ghost {
+    @apply relative px-6 py-3 rounded-2xl font-semibold text-sm transition-all duration-300 transform hover:scale-105 active:scale-95;
+    @apply bg-transparent text-alfa-primary border border-alfa-primary/30;
+    @apply hover:bg-alfa-primary/10 hover:border-alfa-primary;
+  }
+
+  /* Cards com glassmorphism */
+  .card-alfa {
+    @apply relative rounded-3xl p-6 backdrop-blur-xl;
+    @apply bg-gradient-glass border border-white/10;
+    @apply shadow-glass hover:shadow-alfa;
+    @apply transition-all duration-300;
+  }
+
+  .card-alfa-dark {
+    @apply relative rounded-3xl p-6;
+    @apply bg-alfa-darker border border-alfa-primary/20;
+    @apply shadow-glass hover:shadow-alfa;
+    @apply transition-all duration-300;
+  }
+
+  /* Inputs ALFA */
+  .input-alfa {
+    @apply w-full px-4 py-3 rounded-2xl bg-alfa-darker border border-alfa-primary/30;
+    @apply text-alfa-light placeholder-alfa-muted;
+    @apply focus:border-alfa-primary focus:ring-2 focus:ring-alfa-primary/20;
+    @apply transition-all duration-300;
+  }
+
+  /* Animações personalizadas */
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-gradient {
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+  }
+
+  /* Efeitos de hover */
+  .hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-2;
+  }
+
+  .hover-glow {
+    @apply transition-shadow duration-300 hover:shadow-alfa;
+  }
+
+  /* Gradientes de texto */
+  .text-gradient-alfa {
+    @apply bg-gradient-alfa bg-clip-text text-transparent;
+  }
+
+  .text-gradient-neon {
+    @apply bg-gradient-to-r from-alfa-primary to-alfa-secondary bg-clip-text text-transparent;
+  }
+
+  /* Efeitos de partículas */
+  .particle {
+    @apply absolute w-1 h-1 bg-alfa-primary rounded-full opacity-60;
+    animation: float 8s ease-in-out infinite;
+  }
+
+  .particle:nth-child(2) {
+    animation-delay: -2s;
+    animation-duration: 10s;
+  }
+
+  .particle:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 12s;
+  }
+
+  /* Loading spinner */
+  .spinner-alfa {
+    @apply w-8 h-8 border-4 border-alfa-primary/30 border-t-alfa-primary rounded-full;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Efeitos de gravação */
+  .recording-pulse {
+    @apply animate-pulse;
+    animation: recording-pulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes recording-pulse {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+    }
+    50% {
+      transform: scale(1.05);
+      box-shadow: 0 0 0 20px rgba(239, 68, 68, 0);
+    }
+  }
+
+  /* Efeitos de áudio */
+  .audio-wave {
+    @apply flex items-end space-x-1;
+  }
+
+  .audio-bar {
+    @apply bg-gradient-alfa rounded-full;
+    animation: audio-wave 1s ease-in-out infinite;
+  }
+
+  .audio-bar:nth-child(2) { animation-delay: 0.1s; }
+  .audio-bar:nth-child(3) { animation-delay: 0.2s; }
+  .audio-bar:nth-child(4) { animation-delay: 0.3s; }
+  .audio-bar:nth-child(5) { animation-delay: 0.4s; }
+
+  @keyframes audio-wave {
+    0%, 100% { height: 4px; }
+    50% { height: 20px; }
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
