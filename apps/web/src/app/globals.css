@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 15 17 21;
+    --foreground: 255 255 255;
+  }
+
+  * {
+    @apply border-alfa-gray;
+  }
+
+  body {
+    @apply bg-alfa-dark text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Scrollbar customizado */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-alfa-darker;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-alfa-gray rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-alfa-gray-light;
+  }
+}
+
+@layer components {
+  /* Glassmorphism effect */
+  .glass {
+    @apply bg-alfa-white-10 backdrop-blur-md border border-alfa-white-20;
+  }
+
+  .glass-strong {
+    @apply bg-alfa-white-20 backdrop-blur-lg border border-alfa-white-20;
+  }
+
+  /* Botão ALFA padrão */
+  .btn-alfa {
+    @apply relative px-6 py-3 rounded-2xl font-semibold transition-all duration-300;
+    @apply bg-gradient-alfa text-white shadow-glow-alfa;
+    @apply hover:shadow-glow-alfa hover:scale-105;
+    @apply active:scale-95;
+  }
+
+  .btn-alfa-outline {
+    @apply relative px-6 py-3 rounded-2xl font-semibold transition-all duration-300;
+    @apply bg-transparent border-2 border-alfa-blue text-alfa-blue;
+    @apply hover:bg-alfa-blue hover:text-white hover:shadow-glow-blue;
+    @apply active:scale-95;
+  }
+
+  .btn-alfa-ghost {
+    @apply px-6 py-3 rounded-2xl font-semibold transition-all duration-300;
+    @apply bg-alfa-white-10 text-white backdrop-blur-sm;
+    @apply hover:bg-alfa-white-20;
+    @apply active:scale-95;
+  }
+
+  /* Card com glassmorphism */
+  .card-alfa {
+    @apply glass rounded-3xl p-6 transition-all duration-300;
+    @apply hover:bg-alfa-white-20 hover:shadow-glow-alfa;
+  }
+
+  /* Input estilizado */
+  .input-alfa {
+    @apply glass rounded-2xl px-4 py-3 w-full;
+    @apply focus:outline-none focus:ring-2 focus:ring-alfa-blue;
+    @apply placeholder:text-gray-400;
+  }
+
+  /* Gradiente de texto */
+  .text-gradient-alfa {
+    @apply bg-gradient-alfa bg-clip-text text-transparent;
+  }
+
+  /* Animação de pulso customizada */
+  .pulse-alfa {
+    @apply animate-pulse-slow;
+    animation: pulse-alfa 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-alfa {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  /* Grid com padrão de pontos */
+  .dot-pattern {
+    background-image: radial-gradient(circle, rgba(0, 212, 255, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+
+  /* Efeito de brilho no hover */
+  .hover-glow {
+    @apply transition-all duration-300;
+  }
+
+  .hover-glow:hover {
+    @apply shadow-glow-alfa;
+  }
+}
+
+/* Animações customizadas */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 40px rgba(0, 212, 255, 0.6), 0 0 60px rgba(168, 85, 247, 0.4);
+  }
+}
+
+/* Loading spinner ALFA */
+.spinner-alfa {
+  border: 3px solid rgba(0, 212, 255, 0.1);
+  border-top: 3px solid #00d4ff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
